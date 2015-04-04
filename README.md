@@ -6,10 +6,15 @@ All projects should implement authentication (user registration, login and logou
 
 # II. Server-Side Application
 Your application must be implemented using ASP.NET Web API framework.
+
 Expose your public services as RESTful Web services.
+
 Host the application in a cloud environment, e.g. in AppHarbor or Azure.
+
 Use database in the cloud, e.g. MS SQL, MySQL, MongoDB, Redis or other.
+
 Optionally use a file storage cloud API, e.g. Dropbox, Google Drive or other
+
 Optionally use a real-time push notification service, e.g. PubNub, Azure Notifications Hub or other
 
 # III. Client Application (JavaScript)
