@@ -1,10 +1,10 @@
 # TeamWork-Project
 Software University Team Celadon teamwork Web services and Cloud 
 
-# I.General Requirements
+## I.General Requirements
 All projects should **implement authentication** (user registration, login and logout). Some services should be public, while others should be private (accessed after successful login).
 
-# II. Server-Side Application
+## II. Server-Side Application
 • Your application must be implemented using **ASP.NET Web API** framework.
 • Expose your public services as **RESTful** Web services.
 • **Host** the application in a cloud environment, e.g. in AppHarbor or Azure.
@@ -12,7 +12,7 @@ All projects should **implement authentication** (user registration, login and l
 • Optionally use a file storage cloud API, e.g. Dropbox, Google Drive or other
 • Optionally use a real-time push notification service, e.g. PubNub, Azure Notifications Hub or other
 
-# III. Client Application (JavaScript)
+## III. Client Application (JavaScript)
 • Implement a simple client UI for your application:
 
 • Do not put too much time on a beautiful UI.
@@ -23,7 +23,7 @@ All projects should **implement authentication** (user registration, login and l
 
 • The application should run on a modern Web browser.
 
-# Assessment Criteria
+### Assessment Criteria
 • Service Authentication (register / login / logout) – 0…10
 
 • Service Functionality (at least 5 service endpoints) – 0…25
@@ -38,7 +38,7 @@ All projects should **implement authentication** (user registration, login and l
 
 
 
-# Project Description
+### Project Description
 Design and implement RESTful Web services.
  Deploy the ASP.NET Web API application in the cloud. Implement a JavaScript client application, which consumes the services from the cloud.
 You are free to choose what kind of services and application to build. You could implement project like:
