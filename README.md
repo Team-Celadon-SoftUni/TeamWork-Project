@@ -1,5 +1,8 @@
 # TeamWork-Project
 Software University Team Celadon teamwork Web services and Cloud 
+## Assignment Work Google Document
+It's Free for edit
+https://docs.google.com/document/d/1rJ4i_iXSJfMc-MBIMXONhw8eYVtc8faW_OEZvrx9yjM/edit?usp=sharing
 
 ## I.General Requirements
 All projects should **implement authentication** (user registration, login and logout). Some services should be public, while others should be private (accessed after successful login).
