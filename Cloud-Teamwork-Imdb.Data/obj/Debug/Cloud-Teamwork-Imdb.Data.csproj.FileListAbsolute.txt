@@ -1,0 +1,16 @@
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\obj\Debug\Cloud-Teamwork-Imdb.Data.csprojResolveAssemblyReference.cache
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\Cloud-Teamwork-Imdb.Data.dll.config
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\Cloud-Teamwork-Imdb.Data.dll
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\Cloud-Teamwork-Imdb.Data.pdb
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\Cloud-Teamwork-Imdb.Models.dll
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\EntityFramework.dll
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\EntityFramework.SqlServer.dll
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\Cloud-Teamwork-Imdb.Models.pdb
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\EntityFramework.xml
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\EntityFramework.SqlServer.xml
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\obj\Debug\Cloud-Teamwork-Imdb.Data.dll
+E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\obj\Debug\Cloud-Teamwork-Imdb.Data.pdb
