@@ -14,3 +14,19 @@ E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Da
 E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\obj\Debug\Cloud-Teamwork-Imdb.Data.dll
 E:\Programming\SoftUni\Cloud-Teamwork\Cloud-Teamwork-Imdb\Cloud-Teamwork-Imdb.Data\obj\Debug\Cloud-Teamwork-Imdb.Data.pdb
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\bin\Debug\Cloud-Teamwork-Imdb.Data.dll.config
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\bin\Debug\Cloud-Teamwork-Imdb.Data.dll
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\bin\Debug\Cloud-Teamwork-Imdb.Data.pdb
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\bin\Debug\Cloud-Teamwork-Imdb.Models.dll
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\bin\Debug\EntityFramework.dll
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\bin\Debug\Cloud-Teamwork-Imdb.Models.pdb
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\bin\Debug\EntityFramework.xml
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\obj\Debug\Cloud-Teamwork-Imdb.Data.csprojResolveAssemblyReference.cache
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\obj\Debug\Cloud-Teamwork-Imdb.Data.dll
+D:\DataFromPreviousWin\Projects SU\Team-Projects\WebServiceAndCloud_Teamwork\Cloud-Teamwork-Imdb.Data\obj\Debug\Cloud-Teamwork-Imdb.Data.pdb

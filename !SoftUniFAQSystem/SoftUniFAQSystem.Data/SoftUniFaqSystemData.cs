@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
+    using Contracts;
     using Models;
     using Repositories;
 
@@ -17,9 +18,9 @@
             this.repositories = new Dictionary<Type, object>();
         }
 
-        public IRepository<ApplicationUser> Users
+        public IUsersRepository Users
         {
-            get { return (UsersRepository)this.GetRepository<ApplicationUser>(); }
+            get { return (IUsersRepository)this.GetRepository<ApplicationUser>(); }
         }
 
         public IRepository<Question> Questions
@@ -61,7 +62,7 @@
                 this.repositories.Add(type, repo);
             }
 
-            return (GenericRepository<T>)this.repositories[type];
+            return (IRepository<T>)this.repositories[type];
         }
     }
 }

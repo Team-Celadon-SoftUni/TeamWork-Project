@@ -23,7 +23,7 @@ namespace SoftUniFAQSystem.Web.Controllers
 
     [Authorize]
     [RoutePrefix("api/Account")]
-    public class AccountController : ApiController
+    public class AccountController : BaseApiController
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
@@ -330,9 +330,16 @@ namespace SoftUniFAQSystem.Web.Controllers
                 return BadRequest(ModelState);
             }
 
+            var isUniqueEmail = this.Data.Users.CheckEmailUniqueness(model.Email);
+            var isUniqueUsername = this.Data.Users.CheckUsernameUniqueness(model.UserName);
+            if (!isUniqueUsername || !isUniqueEmail)
+            {
+                return this.BadRequest("Invalid username or email. Please try again.");
+            }
+
             var user = new ApplicationUser()
             {
-                UserName = model.Email,
+                UserName = model.UserName,
                 Email = model.Email,
                 FullName = model.FullName
             };

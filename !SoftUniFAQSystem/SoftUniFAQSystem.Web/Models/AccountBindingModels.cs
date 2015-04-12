@@ -21,7 +21,7 @@ namespace SoftUniFAQSystem.Web.Models
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
         public string NewPassword { get; set; }
@@ -34,6 +34,11 @@ namespace SoftUniFAQSystem.Web.Models
 
     public class RegisterBindingModel
     {
+        [Required]
+        [StringLength(50, MinimumLength = 3,
+            ErrorMessage = "Username must be between 3 characters long and 50 characters long.")]
+        public string UserName { get; set; }
+
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -49,7 +54,7 @@ namespace SoftUniFAQSystem.Web.Models
         public string SoftUniId { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -81,7 +86,7 @@ namespace SoftUniFAQSystem.Web.Models
     public class SetPasswordBindingModel
     {
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
         public string NewPassword { get; set; }
