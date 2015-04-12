@@ -204,8 +204,7 @@
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\UserBindingModel.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Models\UserBindingModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

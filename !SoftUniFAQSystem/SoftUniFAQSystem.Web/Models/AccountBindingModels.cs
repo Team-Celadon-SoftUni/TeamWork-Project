@@ -45,7 +45,7 @@ namespace SoftUniFAQSystem.Web.Models
 
         [Required]
         [Display(Name = "SoftUni ID")]
-        [StringLength(9, ErrorMessage = "The {0} must be at exact {2} characters long.", MinimumLength = 1)]
+        [StringLength(9, ErrorMessage = "The {0} must be at exact {2} characters long.", MinimumLength = 9)]
         public string SoftUniId { get; set; }
 
         [Required]

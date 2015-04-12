@@ -7,7 +7,7 @@
     {
         [HttpGet]
         [ActionName("usersDEMO")]
-        public IHttpActionResult GetUsers(UserBindingModel user)
+        public IHttpActionResult GetUsers(UserBindingModel userR)
         {
             if (!this.ModelState.IsValid)
             {
@@ -16,7 +16,7 @@
 
             var allUsers = this.Data.Users.All().ToList();
 
-            return this.Ok(allUsers.Select(a => new UserBindingModel
+            return this.Ok(allUsers.Select(a => new
             {
                 Username = a.UserName,
                 FullName = a.FullName,

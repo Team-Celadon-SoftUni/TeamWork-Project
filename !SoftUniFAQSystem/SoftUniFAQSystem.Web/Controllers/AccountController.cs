@@ -337,7 +337,8 @@ namespace SoftUniFAQSystem.Web.Controllers
                 FullName = model.FullName
             };
 
-            IdentityResult result = UserManager.Create(user, model.Password);
+            IdentityResult result = this.UserManager.Create(user, model.Password);
+            result = this.UserManager.AddToRole(user.Id, "User");
 
             if (!result.Succeeded)
             {
