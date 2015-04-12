@@ -334,7 +334,7 @@ namespace SoftUniFAQSystem.Web.Controllers
             var isUniqueUsername = this.Data.Users.CheckUsernameUniqueness(model.UserName);
             if (!isUniqueUsername || !isUniqueEmail)
             {
-                return this.BadRequest("Invalid username or email. Please try again.");
+                return this.BadRequest("Username or email already taken. Please try again.");
             }
 
             var user = new ApplicationUser()

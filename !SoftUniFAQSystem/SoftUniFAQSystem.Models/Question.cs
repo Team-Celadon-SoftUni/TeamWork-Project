@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Question
     {
@@ -24,7 +25,9 @@
         [MinLength(10, ErrorMessage = "The answer is smaller than 10 symbols")]
         public string Title { get; set; }
 
-        public Guid UserId { get; set; }
+        [Required]
+        [ForeignKey("User")]
+        public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
 
@@ -32,9 +35,6 @@
 
         public DateTime DateOfOpen { get; set; }
 
-        public virtual ICollection<Answer> Answers
-        {
-            get { return this.answers; }
-        }
-    }
+        public virtual ICollection<Answer> Answers { get; set; }
+}
 }

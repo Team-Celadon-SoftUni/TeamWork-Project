@@ -10,12 +10,6 @@
 
     public class ApplicationUser : IdentityUser
     {
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
-        {
-            var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
-            return userIdentity;
-        }
-
         private HashSet<Question> questions;
         private HashSet<Answer> answers;
 
@@ -35,5 +29,11 @@
         public virtual ICollection<Question> Questions { get; set; }
 
         public virtual ICollection<Answer> Answers { get; set; }
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
+        {
+            var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
+            return userIdentity;
+        }
     }
 }
