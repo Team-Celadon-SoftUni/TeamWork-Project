@@ -1,0 +1,105 @@
+<div id="modalEdit" ng-controller="AddPosterCtrl">
+    <div class="row">
+        <div class="col-sm-6">
+            <form name="form" ng-show="isLoged" novalidate>
+                <div class="row">
+                    <div class="col-md-3">
+                        <img id="imgDisplay" ng-src="{{dataAddReq.imageDataUrl?dataAddReq.imageDataUrl:'images/No_image_available.svg'}}">
+                        <div class="row">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <label for="name" class="col-md-2">Name</label>
+                            <div class="col-md-9"><input id="name" style="width: 100%" required ng-model="dataAddReq.name"/></div>
+                        </div>
+                        <div class="row">
+                            <label for="price" class="col-md-2">Price</label>
+                            <div class="col-md-9">
+                                <input type="number" required style="width: 100%" id="price" ng-model="dataAddReq.price"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-2" for="description">Description</label>
+                            <textarea class="col-md-9" id="description" style="margin: 0 15px; width: 71.8%" ng-model="dataAddReq.description" required></textarea>
+                        </div>
+                        <div class="row">
+                            <label for="imgInp" class="col-md-2">Image</label>
+                            <input class="col-md-6" id="imgInp" accept="image/*" type="file" ng-model="img" onchange="angular.element(this).scope().attachFile()"/>
+                        </div>
+                        <div class="row">
+                            <label for="category" class="col-md-2">Category</label>
+
+                            <div class="dropdown col-md-9">
+                                <select class="form-control" required id="category" ng-model="dataAddReq.category">
+                                    <option ng-repeat="category in categories">{{category.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <ul class="nav navbar-nav navbar-right col-md-7">
+                        <span style="font-size: 30px; ">Add Poster?</span>
+                        <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="ok(dataAddReq)">OK</button>
+                        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                    </ul>
+                </div>
+            </form>
+            <div ng-hide="isLoged">
+                <h1>Must be logged in to Add Posters</h1>
+                <input type="text" ng-model="user.username"/>
+                <input type="password" ng-model="user.password"/>
+                <input type="submit" ng-click="submit(user)"/>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <form name="carousel" ng-show="isLoged" novalidate>
+                <div class="row">
+                    <div class="col-md-3">
+                        <img id="carouselDisplay" ng-src="{{dataCarousel.imageDataUrl ? dataCarousel.imageDataUrl:'images/No_image_available.svg'}}">
+                        <div class="row">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <label for="nameCarousel" class="col-md-2">Name</label>
+                            <div class="col-md-9"><input id="nameCarousel" style="width: 100%" required ng-model="dataCarousel.name"/></div>
+                        </div>
+                        <div class="row">
+                            <label for="priceCarousel" class="col-md-2">Price</label>
+                            <div class="col-md-9">
+                                <input type="number" required style="width: 100%" id="priceCarousel" ng-model="dataCarousel.price"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-2" for="descriptionCarousel">Description</label>
+                            <textarea class="col-md-9" id="descriptionCarousel" style="margin: 0 15px; width: 71.8%" ng-model="dataCarousel.description" required></textarea>
+                        </div>
+                        <div class="row">
+                            <label for="imgInpCarousel" class="col-md-2">Image</label>
+                            <input class="col-md-6" id="imgInpCarousel" accept="image/*" type="file" ng-model="img" onchange="angular.element(this).scope().attachCarousel()"/>
+                        </div>
+                        <div class="row">
+                            <label for="categoryCarousel" class="col-md-2">Category</label>
+
+                            <div class="dropdown col-md-9">
+                                <select class="form-control" required id="categoryCarousel" ng-model="dataCarousel.category">
+                                    <option ng-repeat="category in categories">{{category.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <ul class="nav navbar-nav navbar-right col-md-7">
+                        <span style="font-size: 30px; ">Add Carousel?</span>
+                        <button class="btn btn-primary" ng-disabled="carousel.$invalid" ng-click="upCarousel(dataCarousel)">OK</button>
+                        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

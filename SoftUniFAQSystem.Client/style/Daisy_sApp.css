@@ -1,0 +1,103 @@
+li {
+    list-style: none;
+}
+
+body > footer > div > div > div:nth-child(3) > div > div.col-xs-8 > ul > li {
+    display: inline-block;
+    opacity: 0.7;
+    transition: 0.1s;
+}
+
+body > footer > div > div > div:nth-child(3) > div > div.col-xs-8 > ul > li:hover {
+    opacity: 1;
+}
+
+body > footer > div > div > div:nth-child(3) > div > div.col-xs-8 > ul {
+    padding-left: 0;
+}
+
+body > header > div > div.navbar-header > a {
+    font-size: 38px;
+    line-height: 20px;
+    transition: 0.8s;
+}
+
+body > header > div > div.navbar-header > a:hover {
+    opacity: 0.5;
+}
+
+.panel-footer.ng-scope {
+    padding: 2px;
+}
+
+body > header > div > div.navbar-collapse.collapse.navbar-responsive-collapse > ul > li > a {
+    margin-top: 12px;
+}
+
+body {
+    margin-top: 52px;
+}
+
+#wrapper > div > div {
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+body > footer > div > div {
+    margin: 0;
+}
+
+#wrapper > div > div > div {
+    padding: 1px 10px;
+}
+
+#imgDisplay, #carouselDisplay {
+    width: 100px;
+    height: auto;
+    min-height: 120px;
+}
+
+#wrapper > div > div > div.col-md-6.ng-scope {
+    padding: 0;
+}
+
+#imgPoster {
+    width: 250px;
+}
+
+#wrapper > div > ul {
+    background-color: #2B3E50;
+}
+
+#wrapper > div > ul > li {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #4f5e6d;
+}
+
+#wrapper > div > ul > li > div > div > div > div.col-md-7 > div.modul > p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-wrap: break-word;
+    margin: 10px 0;
+    padding: 0;
+}
+
+#wrapper > div > ul > li > div > div > div > div.col-md-7 > div.row > div > div > strong {
+    font-size: 30px;
+    line-height: 0;
+}
+
+#wrapper > div > ul > li > div > div > div > div.col-md-3 {
+    text-align: center;
+}
+
+#wrapper > div > ul > li > div > div.col-md-3 > ul > a {
+    margin: 2px 0;
+}
+
+#loadingScreen {
+    text-align: center;
+    width: 250px;
+    height: 200px;
+}

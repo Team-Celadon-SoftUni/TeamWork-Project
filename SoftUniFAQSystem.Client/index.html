@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="libs/bootstrap.css">
+    <link rel="stylesheet" href="style/Daisy_sApp.css">
+
+</head>
+<body ng-app="daisyApp">
+<header data-ng-include='"partials/header.html"'></header>
+<div class="row" style="width: 100%; height: 35px; text-align: center; overflow: hidden;" id="alerts">
+
+</div>
+<main id="wrapper">
+    <div data-ng-view>
+
+    </div>
+</main>
+<footer data-ng-include='"partials/footer.html"'></footer>
+
+<script src="libs/angular.js"></script>
+<script src="libs/angular-route.js"></script>
+<script src="libs/jquery-2.1.3.js"></script>
+<script src="libs/bootstrap.js"></script>
+<script src="libs/ui-bootstrap-tpls-0.12.0.js"></script>
+<script type="application/javascript" src="daisyApp.js"></script>
+
+<script type="application/javascript" src="js/service/view.js"></script>
+<script type="application/javascript" src="js/service/factoryFunc.js"></script>
+<script type="application/javascript" src="js/service/requester.js"></script>
+<script type="application/javascript" src="js/controllers/header.js"></script>
+<script type="application/javascript" src="js/controllers/NewUserController.js"></script>
+
+</body>
+</html>
