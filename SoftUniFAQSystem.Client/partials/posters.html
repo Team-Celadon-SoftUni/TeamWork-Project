@@ -1,0 +1,48 @@
+<ul class="col-md-12" ng-controller="PosterCtrl">
+    <li ng-show="isLoad" ng-repeat="poster in posters.results">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <span style="font-size: 26px;" class="col-md-9"><strong>{{ poster.name }}</strong></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img id="imgPoster" ng-src="{{poster.image ? poster.image : 'images/No_image_available.svg'}}">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-sm-8"></div>
+                            <div class="col-md-1">
+                                Цена:
+                            </div>
+                            <div class="col-md-3">
+                                <div><strong>{{ poster.price }}</strong> лв</div>
+                            </div>
+                        </div>
+                        <div class="modul">
+                            <p class="col-md-12">{{poster.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center" class="col-md-3">
+                <ul>
+                    <li class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Категория</h3>
+                        </div>
+                        <div class="panel-body">{{poster.category}}</div>
+                    </li>
+
+                    <a class="btn btn-primary col-md-12" ng-click="order(poster)">Поръчай</a>
+                    <a class="btn btn-primary col-md-12" ng-click="orderExtend(poster)">Промени и поръчай</a>
+                </ul>
+            </div>
+        </div>
+
+    </li>
+    <li ng-hide="isLoad">
+        <img id="loadingScreen" style="text-align:center; width: 250px; height: 200px" src="images/loading/rose.gif">
+    </li>
+</ul>
+</div>
