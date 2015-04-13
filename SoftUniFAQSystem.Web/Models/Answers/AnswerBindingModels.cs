@@ -12,7 +12,6 @@
         [MinLength(1, ErrorMessage = "The answer is smaller than 1 symbol")]
         public string Text { get; set; }
 
-        [Required]
         public string UserId { get; set; }
     }
 }

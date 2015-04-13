@@ -13,8 +13,7 @@ namespace SoftUniFAQSystem.Web.Models.Questions
         [MinLength(10, ErrorMessage = "The answer is smaller than 10 symbols")]
         public string Title { get; set; }
 
-        [Required]
-        [ForeignKey("User")]
+        //[Required]
         public string UserId { get; set; }
 
         public QuestionState QuestionState { get; set; }

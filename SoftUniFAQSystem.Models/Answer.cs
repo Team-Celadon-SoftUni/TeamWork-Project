@@ -29,7 +29,7 @@
         public virtual ApplicationUser User { get; set; }
 
         [Required]
-        [ForeignKey("Question")]
+        //[ForeignKey("Question")]
         public int QuestionId { get; set; }
 
         public virtual Question Question { get; set; }

@@ -86,16 +86,24 @@
             {
                 return BadRequest(this.ModelState);
             }
+            var currentUserId = this.User.Identity.GetUserId();
+            var user = this.Data.Users.GetById(currentUserId);
+            if (user == null)
+            {
+                return this.BadRequest(Constants.NotLoggedOn);
+            }
+
             var questionToAdd = new Question
             {
                 Title = question.Title,
-                UserId = question.UserId
+                UserId = user.Id
             };
+            question.UserId = user.Id;
 
             this.Data.Questions.Add(questionToAdd);
             this.Data.Questions.SaveChanges();
 
-            return this.Created(new Uri(Url.Link("DefaultApi", new { id = questionToAdd.Id })), questionToAdd);
+            return this.Created(new Uri(Url.Link("DefaultApi", new { controller = "Questions", id = questionToAdd.Id })), question);
         }
 
         [HttpPut]
@@ -167,11 +175,18 @@
 
         [HttpPost]
         [Route("answer")]
-        public IHttpActionResult PostNewAnswer(int questionId, AnswerBindingModels model)
+        public IHttpActionResult PostNewAnswer(int questionId, [FromBody]AnswerBindingModels model)
         {
             if (!ModelState.IsValid)
             {
                 return this.BadRequest(ModelState);
+            }
+
+            var currentUserId = this.User.Identity.GetUserId();
+            var user = this.Data.Users.GetById(currentUserId);
+            if (user == null)
+            {
+                return this.BadRequest(Constants.NotLoggedOn);
             }
 
             var question = this.Data.Questions.GetById(questionId);
@@ -183,16 +198,17 @@
             var answer = new Answer()
             {
                 Text = model.Text,
-                UserId = model.UserId,
+                UserId = user.Id,
                 AnswerState = AnswerState.Good,
                 DateOfAnswered = DateTime.Now,
                 QuestionId = questionId
             };
+            model.UserId = user.Id;
 
             this.Data.Answers.Add(answer);
             this.Data.SaveChanges();
 
-            return this.Created(new Uri(Url.Link("DefaultApi", new {id = answer.Id})), answer);
+            return this.Created(new Uri(Url.Link("DefaultApi", new {controller = "Answer", id = answer.Id})), model);
         }
 
         [HttpPut]
