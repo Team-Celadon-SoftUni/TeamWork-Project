@@ -14,7 +14,7 @@ namespace SoftUniFAQSystem.Web
     {
         public static void Register(HttpConfiguration config)
         {
-            var cors = new EnableCorsAttribute("http://localhost:63342", "*", "*");
+            var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
 
             config.SuppressDefaultHostAuthentication();
