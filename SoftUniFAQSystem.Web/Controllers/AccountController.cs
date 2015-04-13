@@ -340,6 +340,7 @@
             {
                 UserName = model.UserName,
                 Email = model.Email,
+                SoftUniStudentNumber = model.SoftUniId,
                 FullName = model.FullName
             };
 

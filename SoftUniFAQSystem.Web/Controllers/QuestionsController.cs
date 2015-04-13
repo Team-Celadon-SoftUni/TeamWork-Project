@@ -10,6 +10,7 @@
     using System.Web.Http;
     using SoftUniFAQSystem.Models;
     using SoftUniFAQSystem.Web.Models.Questions;
+    using WebGrease.Css.Extensions;
 
     public class QuestionsController : BaseApiController
     {
@@ -34,10 +35,40 @@
                 Title = q.Title,
                 UserId = q.UserId,
                 QuestionState = q.QuestionState,
-                DateOfOpen = q.DateOfOpen
+                DateOfOpen = q.DateOfOpen,
+                //NumberOfAnswers = q.Answers.Count()
             }));
 
             return Ok(bindedQuestions);
+        }
+
+        [HttpGet]
+        public IEnumerable<QuestionDataModel> GetAllByStatus(string state)
+        {
+            QuestionState questionState;
+            try
+            {
+                Enum.TryParse(state, true, out questionState);
+            }
+            catch (ArgumentException)
+            {
+                
+                return null;
+            }
+
+            var questions = this.Data.Questions.GetAllByStatus(questionState);
+            var bindedQuestions = new List<QuestionDataModel>();
+            questions.ForEach(q => bindedQuestions.Add(new QuestionDataModel
+            {
+                Id = q.Id,
+                Title = q.Title,
+                QuestionState = q.QuestionState,
+                DateOfOpen = q.DateOfOpen,
+                NumberOfAnswers = q.Answers.Count(),
+                UserId = q.UserId
+            }));
+
+            return bindedQuestions;
         }
 
         [HttpGet]

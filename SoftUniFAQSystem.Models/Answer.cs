@@ -28,6 +28,12 @@
 
         public virtual ApplicationUser User { get; set; }
 
+        [Required]
+        [ForeignKey("Question")]
+        public int QuestionId { get; set; }
+
+        public virtual Question Question { get; set; }
+
         public DateTime DateOfAnswered { get; set; }
 
         public DateTime? UpdatedOn { get; set; }

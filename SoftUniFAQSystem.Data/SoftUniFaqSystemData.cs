@@ -28,12 +28,12 @@
             get { return (IUsersRepository)this.GetRepository<ApplicationUser>(); }
         }
 
-        public IRepository<Question> Questions
+        public IQuestionRepository Questions
         {
             get { return (QuestionsRepository)this.GetRepository<Question>(); }
         }
 
-        public IRepository<Answer> Answers
+        public IAnswerRepository Answers
         {
             get { return (AnswersRepository)this.GetRepository<Answer>(); }
         }

@@ -6,9 +6,9 @@
     {
         IUsersRepository Users { get; }
 
-        IRepository<Question> Questions { get; }
+        IQuestionRepository Questions { get; }
 
-        IRepository<Answer> Answers { get; }
+        IAnswerRepository Answers { get; }
 
         int SaveChanges();
     }

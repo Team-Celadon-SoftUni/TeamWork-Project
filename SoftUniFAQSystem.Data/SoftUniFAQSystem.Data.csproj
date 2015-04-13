@@ -57,6 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Contracts\IAnswerRepository.cs" />
+    <Compile Include="Contracts\IQuestionRepository.cs" />
     <Compile Include="Contracts\ISoftUniFAQSystemDbContext.cs" />
     <Compile Include="Contracts\IUsersRepository.cs" />
     <Compile Include="Migrations\Configuration.cs" />

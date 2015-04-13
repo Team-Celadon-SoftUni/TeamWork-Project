@@ -8,7 +8,9 @@
     using Data.Contracts;
 
     using Models.Answers;
+    using WebGrease.Css.Extensions;
 
+    [RoutePrefix("api/answer")]
     public class AnswerController : BaseApiController
     {
         public AnswerController()
@@ -38,6 +40,32 @@
             return bindedAnswers;
         }
 
+        [HttpGet]
+        [Route("question")]
+        public IHttpActionResult GetAllByQuestionId(int questionId)
+        {
+            var question = this.Data.Questions.GetById(questionId);
+            if (question  == null)
+            {
+                return this.BadRequest(Constants.NoSuchQuestion);
+            }
+
+            var answers = this.Data.Answers.GetAllByQuestionId(questionId);
+            var bindedAnswers = new List<AnswerDataModel>();
+            answers.ForEach(a => bindedAnswers.Add(new AnswerDataModel
+            {
+                Id = a.Id,
+                AnswerState = a.AnswerState,
+                DateOfAnswered = a.DateOfAnswered,
+                QuestionId = a.QuestionId,
+                Text = a.Text,
+                UserId = a.UserId,
+                UpdatedOn = a.UpdatedOn
+            }));
+
+            return this.Ok(bindedAnswers);
+        }
+        
         [HttpGet]
         public IHttpActionResult GetAnswerById(int id)
         {

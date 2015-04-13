@@ -15,5 +15,7 @@
         public QuestionState QuestionState { get; set; }
 
         public DateTime DateOfOpen { get; set; }
+
+        public int? NumberOfAnswers { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.Design;
     using System.Linq;
     using System.Web.Http;
     using Data;
@@ -14,6 +15,7 @@
     using Constants = Web.Constants;
 
     [Authorize]
+    [RoutePrefix("api/user")]
     public class UserController : BaseApiController
     {
         public UserController()
@@ -77,6 +79,7 @@
         }
 
         [HttpPost]
+        [Route("question")]
         public IHttpActionResult PostNewQuestion(QuestionBindingModel question)
         {
             if (!this.ModelState.IsValid)
@@ -96,6 +99,7 @@
         }
 
         [HttpPut]
+        [Route("question")]
         public IHttpActionResult UpdateQuestion(int id, QuestionBindingModel question)
         {
             if (!this.ModelState.IsValid)
@@ -107,6 +111,17 @@
             if (questionToUpdate == null)
             {
                 return BadRequest(Constants.NoSuchQuestion);
+            }
+
+            var currentUserId = this.User.Identity.GetUserId();
+            if (currentUserId == null)
+            {
+                return this.BadRequest(Constants.NotLoggedOn);
+            }
+
+            if (questionToUpdate.UserId != currentUserId)
+            {
+                return this.Unauthorized();
             }
 
             questionToUpdate.Title = question.Title;
@@ -124,12 +139,24 @@
         }
 
         [HttpDelete]
+        [Route("question")]
         public IHttpActionResult DeleteQuestion(int id)
         {
             var questionToDelete = this.Data.Questions.GetById(id);
             if (questionToDelete == null)
             {
                 return BadRequest(Constants.NoSuchQuestion);
+            }
+
+            var currentUserId = this.User.Identity.GetUserId();
+            if (currentUserId == null)
+            {
+                return this.BadRequest(Constants.NotLoggedOn);
+            }
+
+            if (questionToDelete.UserId != currentUserId)
+            {
+                return this.Unauthorized();
             }
 
             this.Data.Questions.Delete(questionToDelete);
@@ -139,11 +166,18 @@
         }
 
         [HttpPost]
-        public IHttpActionResult PostNewAnswer(AnswerBindingModels model)
+        [Route("answer")]
+        public IHttpActionResult PostNewAnswer(int questionId, AnswerBindingModels model)
         {
             if (!ModelState.IsValid)
             {
                 return this.BadRequest(ModelState);
+            }
+
+            var question = this.Data.Questions.GetById(questionId);
+            if (question == null)
+            {
+                return this.BadRequest(Constants.NoSuchQuestion);
             }
 
             var answer = new Answer()
@@ -151,7 +185,8 @@
                 Text = model.Text,
                 UserId = model.UserId,
                 AnswerState = AnswerState.Good,
-                DateOfAnswered = DateTime.Now
+                DateOfAnswered = DateTime.Now,
+                QuestionId = questionId
             };
 
             this.Data.Answers.Add(answer);
@@ -161,6 +196,7 @@
         }
 
         [HttpPut]
+        [Route("answer")]
         public IHttpActionResult UpdateAnswer(int id, AnswerBindingModels model)
         {
             if (!ModelState.IsValid)
@@ -173,6 +209,16 @@
             {
                 return this.BadRequest(Constants.NoSuchAnswer);
             }
+            var currentUserId = this.User.Identity.GetUserId();
+            if (currentUserId == null)
+            {
+                return this.BadRequest(Constants.NotLoggedOn);
+            }
+
+            if (answer.UserId != currentUserId)
+            {
+                return this.Unauthorized();
+            }
 
             answer.Text = model.Text;
             answer.UpdatedOn = DateTime.Now;
@@ -183,6 +229,37 @@
             return this.Ok(new
             {
                 message = "Answer updated successfully!",
+                AnswerId = answer.Id
+            });
+        }
+
+        [HttpDelete]
+        [Route("answer")]
+        public IHttpActionResult DeleteAnswer(int id)
+        {
+            var answer = this.Data.Answers.GetById(id);
+            if (answer == null)
+            {
+                return this.BadRequest(Constants.NoSuchAnswer);
+            }
+
+            var currentUserId = this.User.Identity.GetUserId();
+            if (currentUserId == null)
+            {
+                return this.BadRequest(Constants.NotLoggedOn);
+            }
+
+            if (answer.UserId != currentUserId)
+            {
+                return this.Unauthorized();
+            }
+
+            this.Data.Answers.Delete(answer);
+            this.Data.SaveChanges();
+
+            return this.Ok(new
+            {
+                message = "Answer deleted successfully!",
                 AnswerId = answer.Id
             });
         }
