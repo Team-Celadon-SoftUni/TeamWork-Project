@@ -1,6 +1,6 @@
 daisyApp.factory('requester', function requester($http) {
     var content = 'application/json';
-    var rootURL = 'http://localhost:32227/';
+    var rootURL = 'http://faqsystem.apphb.com/';
 
     function request(method, path, data, success, error, params) {
         console.log(rootURL + path);

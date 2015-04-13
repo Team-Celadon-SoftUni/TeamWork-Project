@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Http;
+    using System.Web.Http.Cors;
     using System.Web.Http.ModelBinding;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -20,8 +21,9 @@
     using Results;
     using SoftUniFAQSystem.Models;
 
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/Account")]
+    //[EnableCors(origins: "http://localhost:63342", headers: "*", methods: "*")]
     public class AccountController : BaseApiController
     {
         private const string LocalLoginProvider = "Local";

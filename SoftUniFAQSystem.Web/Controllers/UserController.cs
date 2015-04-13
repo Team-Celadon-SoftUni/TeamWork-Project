@@ -14,7 +14,7 @@
     using SoftUniFAQSystem.Models;
     using Constants = Web.Constants;
 
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/user")]
     public class UserController : BaseApiController
     {
