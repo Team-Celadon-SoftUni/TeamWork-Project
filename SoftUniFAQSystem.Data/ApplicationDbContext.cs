@@ -11,7 +11,6 @@
         public ApplicationDbContext()
             : base("FAQSystem", throwIfV1Schema: false)
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
 
         public IDbSet<Question> Questions { get; set; }
