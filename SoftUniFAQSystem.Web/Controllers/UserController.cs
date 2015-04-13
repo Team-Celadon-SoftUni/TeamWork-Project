@@ -1,6 +1,4 @@
-﻿using SoftUniFAQSystem.Web.Models.Questions;
-
-namespace SoftUniFAQSystem.Web.Controllers
+﻿namespace SoftUniFAQSystem.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -15,6 +13,7 @@ namespace SoftUniFAQSystem.Web.Controllers
     using Models.Users;
 
     using SoftUniFAQSystem.Models;
+    using SoftUniFAQSystem.Web.Models.Questions;
 
     [Authorize]
     public class UserController : BaseApiController
@@ -86,7 +85,6 @@ namespace SoftUniFAQSystem.Web.Controllers
             {
                 return BadRequest(this.ModelState);
             }
-
             var questionToAdd = new Question
             {
                 Title = question.Title,

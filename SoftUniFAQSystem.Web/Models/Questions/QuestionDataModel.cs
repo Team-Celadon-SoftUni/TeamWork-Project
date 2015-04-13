@@ -12,12 +12,8 @@
 
         public string UserId { get; set; }
 
-        public virtual ApplicationUser User { get; set; }
-
         public QuestionState QuestionState { get; set; }
 
         public DateTime DateOfOpen { get; set; }
-
-        public virtual ICollection<Answer> Answers { get; set; }
     }
 }
