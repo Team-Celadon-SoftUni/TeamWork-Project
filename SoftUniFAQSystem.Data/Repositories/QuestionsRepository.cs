@@ -5,7 +5,7 @@
 
     public class QuestionsRepository : GenericRepository<Question>
     {
-        protected QuestionsRepository(DbContext context)
+        public QuestionsRepository(DbContext context)
             : base(context)
         {
         }

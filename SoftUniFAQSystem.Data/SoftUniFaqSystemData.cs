@@ -12,6 +12,11 @@
         private DbContext context;
         private IDictionary<Type, object> repositories;
 
+        public SoftUniFaqSystemData()
+            : this(new ApplicationDbContext())
+        {
+        }
+
         public SoftUniFaqSystemData(DbContext context)
         {
             this.context = context;

@@ -8,7 +8,7 @@
     public class BaseApiController : ApiController
     {
         protected BaseApiController()
-            : this(new SoftUniFaqSystemData(new ApplicationDbContext()))
+            : this(new SoftUniFaqSystemData())
         {
         }
 

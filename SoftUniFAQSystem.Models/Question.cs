@@ -36,5 +36,5 @@
         public DateTime DateOfOpen { get; set; }
 
         public virtual ICollection<Answer> Answers { get; set; }
-}
+    }
 }

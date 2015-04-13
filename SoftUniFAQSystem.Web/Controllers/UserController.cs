@@ -1,4 +1,6 @@
-﻿namespace SoftUniFAQSystem.Web.Controllers
+﻿using SoftUniFAQSystem.Web.Models.Questions;
+
+namespace SoftUniFAQSystem.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -18,7 +20,7 @@
     public class UserController : BaseApiController
     {
         public UserController()
-            : this(new SoftUniFaqSystemData(new ApplicationDbContext()))
+            : this(new SoftUniFaqSystemData())
         {
         }
 
@@ -60,7 +62,7 @@
             var user = this.Data.Users.GetById(id);
             if (user == null)
             {
-                return this.BadRequest("Couldn't find user with such id. Please try again.");
+                return this.BadRequest(Constants.NoSuchUser);
             }
 
             var bindedUser = new UserDataModel
@@ -75,6 +77,71 @@
             };
 
             return this.Ok(bindedUser);
+        }
+
+        [HttpPost]
+        public IHttpActionResult PostNewQuestion(QuestionBindingModel question)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(this.ModelState);
+            }
+
+            var questionToAdd = new Question
+            {
+                Title = question.Title,
+                UserId = question.UserId
+            };
+
+            this.Data.Questions.Add(questionToAdd);
+            this.Data.Questions.SaveChanges();
+
+            return this.Created(new Uri(Url.Link("DefaultApi", new { id = questionToAdd.Id })), questionToAdd);
+        }
+
+        [HttpPut]
+        public IHttpActionResult UpdateQuestion(Guid id, QuestionBindingModel question)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var questionToUpdate = this.Data.Questions
+                .All()
+                .FirstOrDefault(q => q.Id == id);
+            if (questionToUpdate == null)
+            {
+                return BadRequest(Constants.NoSuchQuestion);
+            }
+
+            questionToUpdate.Title = question.Title;
+            if (question.QuestionState != 0)
+            {
+                questionToUpdate.QuestionState = question.QuestionState;
+            }
+            this.Data.Questions.SaveChanges();
+
+            return this.Ok(new
+            {
+                message = "Question updated successfully!",
+                QuestionId = questionToUpdate.Id
+            });
+        }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteQuestion(Guid id)
+        {
+            var questionToDelete = this.Data.Questions.All().FirstOrDefault(q => q.Id == id);
+            if (questionToDelete == null)
+            {
+                return BadRequest(Constants.NoSuchQuestion);
+            }
+
+            this.Data.Questions.Delete(questionToDelete);
+            this.Data.Questions.SaveChanges();
+
+            return Ok(id);
         }
 
         [HttpPost]
@@ -110,7 +177,7 @@
             var answer = this.Data.Answers.GetById(id);
             if (answer == null)
             {
-                return this.BadRequest("Couldn't find answer with such id. Please try again.");
+                return this.BadRequest(Constants.NoSuchAnswer);
             }
 
             answer.Text = model.Text;

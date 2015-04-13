@@ -12,7 +12,7 @@
     public class AnswerController : BaseApiController
     {
         public AnswerController()
-            : this(new SoftUniFaqSystemData(new ApplicationDbContext()))
+            : this(new SoftUniFaqSystemData())
         {
         }
 
