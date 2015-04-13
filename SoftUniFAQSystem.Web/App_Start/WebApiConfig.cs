@@ -8,6 +8,8 @@ using Newtonsoft.Json.Serialization;
 
 namespace SoftUniFAQSystem.Web
 {
+    using System.Web.Http.Cors;
+
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
@@ -16,6 +18,10 @@ namespace SoftUniFAQSystem.Web
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
+            // Enables CORS for all methods.
+            var corsAttr = new EnableCorsAttribute("http://faqsystem.apphb.com", "*", "*");
+            config.EnableCors(corsAttr);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
