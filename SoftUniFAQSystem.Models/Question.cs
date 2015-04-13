@@ -13,12 +13,12 @@
         {
             this.answers = new HashSet<Answer>();
             this.DateOfOpen = DateTime.Now;
-            this.Id = Guid.NewGuid();
+            // this.Id = Guid.NewGuid();
             this.QuestionState = QuestionState.Active;
         }
 
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(150, ErrorMessage = "The question is bigger than 150 symbols.")]

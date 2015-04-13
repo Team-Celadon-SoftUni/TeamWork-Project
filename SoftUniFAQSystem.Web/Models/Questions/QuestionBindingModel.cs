@@ -18,7 +18,5 @@ namespace SoftUniFAQSystem.Web.Models.Questions
         public string UserId { get; set; }
 
         public QuestionState QuestionState { get; set; }
-
-        public DateTime DateOfOpen { get; set; }
     }
 }

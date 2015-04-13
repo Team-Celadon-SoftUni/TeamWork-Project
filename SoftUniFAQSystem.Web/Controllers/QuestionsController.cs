@@ -27,9 +27,10 @@
         public IHttpActionResult All()
         {
             var questions = this.Data.Questions.All().ToList();
-            var bindedQuestions = new List<QuestionBindingModel>();
-            questions.ForEach(q => bindedQuestions.Add(new QuestionBindingModel
+            var bindedQuestions = new List<QuestionDataModel>();
+            questions.ForEach(q => bindedQuestions.Add(new QuestionDataModel
             {
+                Id = q.Id,
                 Title = q.Title,
                 UserId = q.UserId,
                 QuestionState = q.QuestionState,
@@ -40,15 +41,16 @@
         }
 
         [HttpGet]
-        public IHttpActionResult GetById(Guid id)
+        public IHttpActionResult GetById(int id)
         {
-            var question = this.Data.Questions.All().FirstOrDefault(q => q.Id == id);
+            var question = this.Data.Questions.GetById(id);
             if (question == null)
             {
                 return this.BadRequest(Constants.NoSuchQuestion);
             }
-            var bindedQuestion = new QuestionBindingModel
+            var bindedQuestion = new QuestionDataModel
             {
+                Id = question.Id,
                 Title = question.Title,
                 UserId = question.UserId,
                 QuestionState = question.QuestionState,
