@@ -28,7 +28,7 @@
             return this.Set.Where(expression).ToList();
         }
 
-        public T GetById(object id)
+        public virtual T GetById(object id)
         {
             return this.Set.Find(id);
         }

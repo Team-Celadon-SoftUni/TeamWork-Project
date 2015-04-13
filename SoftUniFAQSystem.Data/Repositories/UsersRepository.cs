@@ -12,6 +12,14 @@
         {
         }
 
+        public override ApplicationUser GetById(object id)
+        {
+            return this.Set
+                .Include(u => u.Answers)
+                .Include(u => u.Questions)
+                .FirstOrDefault(u => u.Id == (string)id);
+        }
+
         public bool CheckEmailUniqueness(string email)
         {
             ApplicationUser matchingUsersWithThisEmail = this.Find(u => u.Email == email).FirstOrDefault();

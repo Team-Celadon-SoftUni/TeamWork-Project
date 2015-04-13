@@ -14,11 +14,5 @@
 
         [Required]
         public string UserId { get; set; }
-
-        public DateTime DateOfAnswered { get; set; }
-
-        public DateTime? UpdatedOn { get; set; }
-
-        public AnswerState AnswerState { get; set; }
     }
 }

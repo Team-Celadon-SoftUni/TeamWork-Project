@@ -1,20 +1,17 @@
-﻿using SoftUniFAQSystem.Web.Models.Questions;
-
-namespace SoftUniFAQSystem.Web.Controllers
+﻿namespace SoftUniFAQSystem.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
-    using System.Data.SqlTypes;
     using System.Linq;
     using System.Web.Http;
-
     using Data;
     using Data.Contracts;
-
+    using Microsoft.AspNet.Identity;
     using Models.Answers;
+    using Models.Questions;
     using Models.Users;
-
     using SoftUniFAQSystem.Models;
+    using Constants = Web.Constants;
 
     [Authorize]
     public class UserController : BaseApiController
