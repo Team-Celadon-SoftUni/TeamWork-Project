@@ -19,9 +19,8 @@ namespace SoftUniFAQSystem.Web
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
-            // Enables CORS for all methods.
-            var corsAttr = new EnableCorsAttribute("http://faqsystem.apphb.com", "*", "*");
-            config.EnableCors(corsAttr);
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
