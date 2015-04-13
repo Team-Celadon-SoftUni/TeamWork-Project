@@ -7,7 +7,7 @@
 
     public class UsersRepository : GenericRepository<ApplicationUser>, IUsersRepository
     {
-        public UsersRepository(DbContext context)
+        public UsersRepository(ISoftUniFAQSystemDbContext context)
             : base(context)
         {
         }

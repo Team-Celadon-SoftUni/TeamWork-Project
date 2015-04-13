@@ -9,10 +9,10 @@
 
     public class GenericRepository<T> : IRepository<T> where T : class
     {
-        private readonly DbContext context;
+        private readonly ISoftUniFAQSystemDbContext context;
         private readonly IDbSet<T> set;
 
-        public GenericRepository(DbContext context)
+        public GenericRepository(ISoftUniFAQSystemDbContext context)
         {
             this.context = context;
             this.set = context.Set<T>();

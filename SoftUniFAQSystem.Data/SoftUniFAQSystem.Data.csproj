@@ -57,8 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Contracts\ISoftUniFAQSystemDbContext.cs" />
     <Compile Include="Contracts\IUsersRepository.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SoftUniFaqSystemData.cs" />
     <Compile Include="Contracts\ISoftUniFAQSystemData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
