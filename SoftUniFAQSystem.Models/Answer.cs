@@ -9,13 +9,13 @@
     {
         public Answer()
         {
-            this.Id = Guid.NewGuid();
+            // this.Id = Guid.NewGuid();
             this.DateOfAnswered = DateTime.Now;
             this.AnswerState = AnswerState.Good;
         }
 
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(200, ErrorMessage = "The answer is bigger than 200 symbols.")]

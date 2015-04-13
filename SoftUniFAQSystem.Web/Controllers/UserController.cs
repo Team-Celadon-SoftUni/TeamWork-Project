@@ -100,16 +100,14 @@ namespace SoftUniFAQSystem.Web.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult UpdateQuestion(Guid id, QuestionBindingModel question)
+        public IHttpActionResult UpdateQuestion(int id, QuestionBindingModel question)
         {
             if (!this.ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var questionToUpdate = this.Data.Questions
-                .All()
-                .FirstOrDefault(q => q.Id == id);
+            var questionToUpdate = this.Data.Questions.GetById(id);
             if (questionToUpdate == null)
             {
                 return BadRequest(Constants.NoSuchQuestion);
@@ -130,9 +128,9 @@ namespace SoftUniFAQSystem.Web.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult DeleteQuestion(Guid id)
+        public IHttpActionResult DeleteQuestion(int id)
         {
-            var questionToDelete = this.Data.Questions.All().FirstOrDefault(q => q.Id == id);
+            var questionToDelete = this.Data.Questions.GetById(id);
             if (questionToDelete == null)
             {
                 return BadRequest(Constants.NoSuchQuestion);

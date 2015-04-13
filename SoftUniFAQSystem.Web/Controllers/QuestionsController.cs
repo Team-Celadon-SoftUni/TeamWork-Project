@@ -40,9 +40,9 @@
         }
 
         [HttpGet]
-        public IHttpActionResult GetById(Guid id)
+        public IHttpActionResult GetById(int id)
         {
-            var question = this.Data.Questions.All().FirstOrDefault(q => q.Id == id);
+            var question = this.Data.Questions.GetById(id);
             if (question == null)
             {
                 return this.BadRequest(Constants.NoSuchQuestion);
