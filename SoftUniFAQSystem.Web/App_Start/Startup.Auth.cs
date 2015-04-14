@@ -14,6 +14,7 @@ using SoftUniFAQSystem.Web.Models;
 namespace SoftUniFAQSystem.Web
 {
     using Data;
+    using Microsoft.Owin.Cors;
 
     public partial class Startup
     {
@@ -24,6 +25,9 @@ namespace SoftUniFAQSystem.Web
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+    //Delete if not work
+            app.UseCors(CorsOptions.AllowAll);
+
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
