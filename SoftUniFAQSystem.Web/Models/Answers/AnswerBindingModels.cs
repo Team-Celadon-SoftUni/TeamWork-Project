@@ -1,9 +1,6 @@
 ﻿namespace SoftUniFAQSystem.Web.Models.Answers
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using SoftUniFAQSystem.Models;
 
     public class AnswerBindingModels
     {

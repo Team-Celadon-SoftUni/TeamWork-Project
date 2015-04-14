@@ -3,13 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Web;
-    using SoftUniFAQSystem.Data;
-    using SoftUniFAQSystem.Data.Contracts;
-    using SoftUniFAQSystem.Web.Models.Answers;
     using System.Web.Http;
+
+    using Data;
+    using Data.Contracts;
+
+    using Models.Questions;
     using SoftUniFAQSystem.Models;
-    using SoftUniFAQSystem.Web.Models.Questions;
     using WebGrease.Css.Extensions;
 
     public class QuestionsController : BaseApiController
@@ -35,7 +35,7 @@
                 Title = q.Title,
                 UserId = q.UserId,
                 QuestionState = q.QuestionState,
-                DateOfOpen = q.DateOfOpen,
+                DateOfOpen = q.DateOfOpen
                 //NumberOfAnswers = q.Answers.Count()
             }));
 
@@ -52,7 +52,6 @@
             }
             catch (ArgumentException)
             {
-                
                 return null;
             }
 
@@ -86,6 +85,7 @@
                 UserId = question.UserId,
                 QuestionState = question.QuestionState,
                 DateOfOpen = question.DateOfOpen,
+                NumberOfAnswers = question.Answers.Count()
             };
 
             return this.Ok(bindedQuestion);
