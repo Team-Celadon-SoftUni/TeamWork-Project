@@ -3,6 +3,7 @@
     using System;
 
     using SoftUniFAQSystem.Models;
+    using Users;
 
     public class AnswerDataModel
     {
@@ -12,7 +13,7 @@
 
         public string UserId { get; set; }
 
-        public virtual ApplicationUser User { get; set; }
+        public virtual UserDataModel User { get; set; }
 
         public int QuestionId { get; set; }
 

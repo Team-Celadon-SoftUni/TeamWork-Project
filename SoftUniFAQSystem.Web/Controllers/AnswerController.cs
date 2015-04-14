@@ -8,6 +8,7 @@
     using Data.Contracts;
 
     using Models.Answers;
+    using Models.Users;
     using WebGrease.Css.Extensions;
 
     [RoutePrefix("api/answer")]
@@ -74,6 +75,13 @@
             {
                 return this.BadRequest("Couldn't find answer with such id. Please try again.");
             }
+            var bindedUser = new UserDataModel
+            {
+                Id = answer.User.Id,
+                Username = answer.User.UserName,
+                FullName = answer.User.FullName,
+                DateOfRegister = answer.User.DateOfRegister
+            };
             var bindedAnswer = new AnswerDataModel
             {
                 Id = answer.Id,
@@ -81,7 +89,7 @@
                 UserId = answer.UserId,
                 AnswerState = answer.AnswerState,
                 DateOfAnswered = answer.DateOfAnswered,
-                User = answer.User
+                User = bindedUser
             };
 
             return this.Ok(bindedAnswer);

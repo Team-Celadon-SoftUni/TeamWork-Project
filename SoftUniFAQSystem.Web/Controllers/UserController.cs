@@ -13,8 +13,9 @@
     using Models.Users;
     using SoftUniFAQSystem.Models;
     using Constants = Web.Constants;
-
-    [Authorize]
+	
+//TODO: remove comment
+    //[Authorize]
     [RoutePrefix("api/user")]
     public class UserController : BaseApiController
     {
