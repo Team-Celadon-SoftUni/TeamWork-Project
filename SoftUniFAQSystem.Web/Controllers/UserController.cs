@@ -12,6 +12,7 @@
     using Models.Questions;
     using Models.Users;
     using SoftUniFAQSystem.Models;
+    using WebGrease.Css.Extensions;
     using Constants = Web.Constants;
 	
 //TODO: remove comment
@@ -64,6 +65,28 @@
             {
                 return this.BadRequest(Constants.NoSuchUser);
             }
+            var answers = new List<AnswerDataModel>();
+            user.Answers.ForEach(a => answers.Add(new AnswerDataModel
+            {
+                Id = a.Id,
+                AnswerState = a.AnswerState,
+                DateOfAnswered = a.DateOfAnswered,
+                QuestionId = a.QuestionId,
+                Text = a.Text,
+                UserId = a.UserId,
+                UpdatedOn = a.UpdatedOn
+            }));
+
+            var questions = new List<QuestionDataModel>();
+            user.Questions.ForEach(q => questions.Add(new QuestionDataModel
+            {
+                Id = q.Id,
+                Title = q.Title,
+                QuestionState = q.QuestionState,
+                DateOfOpen = q.DateOfOpen,
+                NumberOfAnswers = q.Answers.Count(),
+                UserId = q.UserId
+            }));
 
             var bindedUser = new UserDataModel
             {
@@ -72,8 +95,8 @@
                 FullName = user.FullName,
                 SoftUniStudentNumber = user.SoftUniStudentNumber,
                 DateOfRegister = user.DateOfRegister,
-                Answers = user.Answers,
-                Questions = user.Questions
+                Answers = answers,
+                Questions = questions
             };
 
             return this.Ok(bindedUser);

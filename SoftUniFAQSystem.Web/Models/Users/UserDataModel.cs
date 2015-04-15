@@ -2,6 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
+    using Answers;
+    using Questions;
     using SoftUniFAQSystem.Models;
 
     public class UserDataModel
@@ -16,8 +18,8 @@
 
         public DateTime DateOfRegister { get; set; }
 
-        public virtual ICollection<Question> Questions { get; set; }
+        public virtual ICollection<QuestionDataModel> Questions { get; set; }
 
-        public virtual ICollection<Answer> Answers { get; set; }
+        public virtual ICollection<AnswerDataModel> Answers { get; set; }
     }
 }
