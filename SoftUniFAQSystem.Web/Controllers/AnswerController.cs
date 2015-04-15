@@ -89,6 +89,7 @@
                 UserId = answer.UserId,
                 AnswerState = answer.AnswerState,
                 DateOfAnswered = answer.DateOfAnswered,
+                QuestionId = answer.QuestionId,
                 User = bindedUser
             };
 

@@ -2,21 +2,23 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.Design;
     using System.Linq;
     using System.Web.Http;
+
     using Data;
     using Data.Contracts;
+
     using Microsoft.AspNet.Identity;
+
     using Models.Answers;
     using Models.Questions;
     using Models.Users;
+
     using SoftUniFAQSystem.Models;
     using WebGrease.Css.Extensions;
     using Constants = Web.Constants;
-	
-//TODO: remove comment
-    //[Authorize]
+
+    [Authorize]
     [RoutePrefix("api/user")]
     public class UserController : BaseApiController
     {
@@ -31,7 +33,6 @@
         }
 
         [HttpGet]
-        [ActionName("usersDEMO")]
         public IEnumerable<UserDataModel> GetUsers()
         {
             var allUsers = this.Data.Users.All().Select(a => new
@@ -120,14 +121,18 @@
             var questionToAdd = new Question
             {
                 Title = question.Title,
-                UserId = user.Id
+                UserId = user.Id,
+                DateOfOpen = DateTime.Now,
+                QuestionState = QuestionState.Active,
+                NumberOfBestAnswers = 0
             };
             question.UserId = user.Id;
 
             this.Data.Questions.Add(questionToAdd);
             this.Data.Questions.SaveChanges();
 
-            return this.Created(new Uri(Url.Link("DefaultApi", new { controller = "Questions", id = questionToAdd.Id })), question);
+            return this.Created(new Uri(Url.Link("DefaultApi", new {controller = "Questions", id = questionToAdd.Id})),
+                question);
         }
 
         [HttpPut]
@@ -191,7 +196,11 @@
                 return this.Unauthorized();
             }
 
-            this.Data.Questions.Delete(questionToDelete);
+            // Inappropriate is the state of a "deleted" question. There won't be any actual deleting in the Db.
+            questionToDelete.QuestionState = QuestionState.Inappropriate;
+
+            //this.Data.Questions.Delete(questionToDelete);
+            this.Data.Questions.Update(questionToDelete);
             this.Data.Questions.SaveChanges();
 
             return Ok(id);
@@ -199,7 +208,7 @@
 
         [HttpPost]
         [Route("answer")]
-        public IHttpActionResult PostNewAnswer(int questionId, [FromBody]AnswerBindingModels model)
+        public IHttpActionResult PostNewAnswer(int questionId, [FromBody] AnswerBindingModels model)
         {
             if (!ModelState.IsValid)
             {
@@ -219,7 +228,7 @@
                 return this.BadRequest(Constants.NoSuchQuestion);
             }
 
-            var answer = new Answer()
+            var answer = new Answer
             {
                 Text = model.Text,
                 UserId = user.Id,
@@ -260,6 +269,27 @@
                 return this.Unauthorized();
             }
 
+            if (model.AnswerState != answer.AnswerState)
+            {
+                if (answer.AnswerState != AnswerState.Best || answer.AnswerState != AnswerState.SecondaryBest)
+                {
+                    if ((model.AnswerState == AnswerState.Best) || (model.AnswerState == AnswerState.SecondaryBest))
+                    {
+                        var question = this.Data.Questions.GetById(answer.QuestionId);
+                        if (question.NumberOfBestAnswers >= 2)
+                        {
+                            return this.BadRequest(Constants.BestAnswersLimitReached);
+                        }
+
+                        question.NumberOfBestAnswers++;
+                        this.Data.Questions.Update(question);
+                    }
+                }
+               
+                answer.AnswerState = model.AnswerState;
+            }
+            
+
             answer.Text = model.Text;
             answer.UpdatedOn = DateTime.Now;
 
@@ -294,7 +324,11 @@
                 return this.Unauthorized();
             }
 
-            this.Data.Answers.Delete(answer);
+            // Inappropriate is the state of a "deleted" answer. There won't be any actual deleting in the Db.
+            answer.AnswerState = AnswerState.Inappropriate;
+
+            //this.Data.Answers.Delete(answer);
+            this.Data.Answers.Update(answer);
             this.Data.SaveChanges();
 
             return this.Ok(new

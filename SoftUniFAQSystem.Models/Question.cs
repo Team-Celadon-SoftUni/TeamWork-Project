@@ -12,9 +12,7 @@
         public Question()
         {
             this.answers = new HashSet<Answer>();
-            this.DateOfOpen = DateTime.Now;
-            // this.Id = Guid.NewGuid();
-            this.QuestionState = QuestionState.Active;
+            //this.QuestionState = QuestionState.Active;
         }
 
         [Key]
@@ -34,6 +32,8 @@
         public QuestionState QuestionState { get; set; }
 
         public DateTime DateOfOpen { get; set; }
+
+        public int NumberOfBestAnswers { get; set; }
 
         public virtual ICollection<Answer> Answers { get; set; }
     }

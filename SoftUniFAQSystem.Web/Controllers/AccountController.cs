@@ -21,7 +21,7 @@
     using Results;
     using SoftUniFAQSystem.Models;
 
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/Account")]
     //[EnableCors(origins: "http://localhost:63342", headers: "*", methods: "*")]
     public class AccountController : BaseApiController

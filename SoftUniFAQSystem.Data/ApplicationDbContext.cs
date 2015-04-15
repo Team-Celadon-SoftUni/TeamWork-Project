@@ -27,9 +27,6 @@
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //modelBuilder.Entity<ApplicationUser>().HasOptional(u => u.Answers).WithRequired().WillCascadeOnDelete(false);
-            //modelBuilder.Entity<ApplicationUser>().HasOptional(u => u.Questions).WithRequired().WillCascadeOnDelete(false);
-            //modelBuilder.Entity<Question>().HasOptional(q => q.Answers).WithRequired().WillCascadeOnDelete(true);
             modelBuilder.Entity<Question>().HasRequired(q => q.User).WithMany(u => u.Questions).WillCascadeOnDelete(false);
             modelBuilder.Entity<Answer>().HasRequired(a => a.Question).WithMany(q => q.Answers).WillCascadeOnDelete(false);
             

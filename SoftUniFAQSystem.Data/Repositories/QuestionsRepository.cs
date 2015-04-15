@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
+
     using Contracts;
     using Models;
 
@@ -17,8 +18,16 @@
         {
             return this.Set
                 .Include(q => q.Answers)
-                .Where(q => q.QuestionState == state).
-                ToList();
+                .Where(q => q.QuestionState == state)
+                .ToList();
+        }
+
+        public ICollection<Question> GetAllClosedWithBestAnswers()
+        {
+            return this.Set
+                       .Include(q => q.Answers)
+                       .Where(q => q.NumberOfBestAnswers > 0 && q.QuestionState == QuestionState.Closed)
+                       .ToList();
         }
     }
 }

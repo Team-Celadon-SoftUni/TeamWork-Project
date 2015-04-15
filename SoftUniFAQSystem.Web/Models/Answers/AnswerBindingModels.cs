@@ -1,6 +1,7 @@
 ﻿namespace SoftUniFAQSystem.Web.Models.Answers
 {
     using System.ComponentModel.DataAnnotations;
+    using SoftUniFAQSystem.Models;
 
     public class AnswerBindingModels
     {
@@ -10,5 +11,8 @@
         public string Text { get; set; }
 
         public string UserId { get; set; }
+
+        [Required]
+        public AnswerState AnswerState { get; set; }
     }
 }

@@ -9,9 +9,8 @@
     {
         public Answer()
         {
-            // this.Id = Guid.NewGuid();
-            this.DateOfAnswered = DateTime.Now;
-            this.AnswerState = AnswerState.Good;
+            //this.DateOfAnswered = DateTime.Now;
+            //this.AnswerState = AnswerState.Good;
         }
 
         [Key]
