@@ -37,6 +37,6 @@
 
         public DateTime? UpdatedOn { get; set; }
 
-        public AnswerState AnswerState { get; set; }
+        public AnswerState? AnswerState { get; set; }
     }
 }

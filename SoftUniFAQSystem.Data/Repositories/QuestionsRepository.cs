@@ -22,6 +22,16 @@
                 .ToList();
         }
 
+        public ICollection<Question> GetAllClosed()
+        {
+            return this.Set
+                       .Include(q => q.Answers)
+                       .Where(q => q.QuestionState == QuestionState.Closed && 
+                           q.Answers.Any(a => a.AnswerState == AnswerState.Best || 
+                               a.AnswerState == AnswerState.SecondaryBest))
+                       .ToList();
+        }
+
         public ICollection<Question> GetAllClosedWithBestAnswers()
         {
             return this.Set

@@ -7,5 +7,7 @@
     public interface IQuestionRepository : IRepository<Question>
     {
         ICollection<Question> GetAllByStatus(QuestionState state);
+
+        ICollection<Question> GetAllClosed();
     }
 }

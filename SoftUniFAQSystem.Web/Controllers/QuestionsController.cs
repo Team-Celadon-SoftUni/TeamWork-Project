@@ -7,11 +7,12 @@
 
     using Data;
     using Data.Contracts;
-
+    using Models.Answers;
     using Models.Questions;
     using SoftUniFAQSystem.Models;
     using WebGrease.Css.Extensions;
 
+    [RoutePrefix("api/questions")]
     public class QuestionsController : BaseApiController
     {
         public QuestionsController()
@@ -89,6 +90,40 @@
             };
 
             return this.Ok(bindedQuestion);
+        }
+
+        [HttpGet]
+        [Route("closed")]
+        public IEnumerable<QuestionDataModel> GetAllClosed()
+        {
+            var questions = this.Data.Questions.GetAllClosed();
+            var bindedQuestions = new List<QuestionDataModel>();
+
+            foreach (var q in questions)
+            {
+                var answers = q.Answers.Select(a => new AnswerDataModel
+                {
+                    Id = a.Id, 
+                    AnswerState = a.AnswerState, 
+                    DateOfAnswered = a.DateOfAnswered, 
+                    QuestionId = a.QuestionId, 
+                    Text = a.Text, 
+                    UserId = a.UserId, 
+                    UpdatedOn = a.UpdatedOn
+                }).ToList();
+
+                bindedQuestions.Add(new QuestionDataModel
+                {
+                    Id = q.Id,
+                    Title = q.Title,
+                    UserId = q.UserId,
+                    QuestionState = q.QuestionState,
+                    DateOfOpen = q.DateOfOpen,
+                    Answers = answers
+                });
+            }
+
+            return bindedQuestions;
         }
     }
 }

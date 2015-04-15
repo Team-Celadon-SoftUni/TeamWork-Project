@@ -137,7 +137,7 @@
 
         [HttpPut]
         [Route("question")]
-        public IHttpActionResult UpdateQuestion(int id, QuestionBindingModel question)
+        public IHttpActionResult UpdateQuestion(int id, QuestionBindingModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -161,11 +161,22 @@
                 return this.Unauthorized();
             }
 
-            questionToUpdate.Title = question.Title;
-            if (question.QuestionState != 0)
+            questionToUpdate.Title = model.Title;
+            if (model.QuestionState != null)
             {
-                questionToUpdate.QuestionState = question.QuestionState;
+                if (model.QuestionState == QuestionState.Closed)
+                {
+                    var bestAnswers =
+                        questionToUpdate.Answers.Count(a => a.AnswerState == AnswerState.Best || a.AnswerState == AnswerState.SecondaryBest);
+                    if (bestAnswers == 0)
+                    {
+                        return this.BadRequest(Constants.CannotClose);
+                    }
+                }
+
+                questionToUpdate.QuestionState = model.QuestionState;
             }
+
             this.Data.Questions.SaveChanges();
 
             return this.Ok(new
@@ -269,7 +280,7 @@
                 return this.Unauthorized();
             }
 
-            if (model.AnswerState != answer.AnswerState)
+            if (model.AnswerState != null)
             {
                 if (answer.AnswerState != AnswerState.Best || answer.AnswerState != AnswerState.SecondaryBest)
                 {

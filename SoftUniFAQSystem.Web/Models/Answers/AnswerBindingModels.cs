@@ -12,7 +12,6 @@
 
         public string UserId { get; set; }
 
-        [Required]
-        public AnswerState AnswerState { get; set; }
+        public AnswerState? AnswerState { get; set; }
     }
 }
