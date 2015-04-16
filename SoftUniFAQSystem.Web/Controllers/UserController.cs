@@ -116,6 +116,7 @@
 
             var questions = Data.Questions.All()
                 .Where(q => q.UserId == currentUserId)
+                .OrderByDescending(q => q.DateOfOpen)
                 .Select(q => new QuestionDataModel
                 {
                     Id = q.Id,
