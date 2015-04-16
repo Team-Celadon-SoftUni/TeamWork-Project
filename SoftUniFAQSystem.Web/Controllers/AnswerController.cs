@@ -38,7 +38,7 @@
                 DateOfAnswered = a.DateOfAnswered
             }));
 
-            return bindedAnswers.OrderByDescending(a => a.DateOfAnswered);
+            return bindedAnswers;
         }
 
         [HttpGet]
