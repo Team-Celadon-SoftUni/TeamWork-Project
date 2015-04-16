@@ -10,7 +10,7 @@ namespace SoftUniFAQSystem.Web.Models.Questions
     {
         [Required]
         [MaxLength(150, ErrorMessage = "The question is bigger than 150 symbols.")]
-        [MinLength(10, ErrorMessage = "The answer is smaller than 10 symbols")]
+        [MinLength(10, ErrorMessage = "The question is smaller than 10 symbols")]
         public string Title { get; set; }
 
         //[Required]

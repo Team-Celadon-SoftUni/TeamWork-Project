@@ -8,5 +8,6 @@
         public const string NotLoggedOn = "You are not logged in. Please log in.";
         public const string BestAnswersLimitReached = "Invalid operation. The limit(2) for best answers per question has already been reached.";
         public const string CannotClose = "This question cannot be close. It must have at least one answer marked as best!";
+        public const string OwnQuestionError = "You cannot give an answer to your own question!";
     }
 }

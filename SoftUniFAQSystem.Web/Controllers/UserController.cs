@@ -105,7 +105,7 @@
 
         [HttpPost]
         [Route("question")]
-        public IHttpActionResult PostNewQuestion(QuestionBindingModel question)
+        public IHttpActionResult PostNewQuestion(QuestionBindingModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -120,19 +120,20 @@
 
             var questionToAdd = new Question
             {
-                Title = question.Title,
+                Title = model.Title,
                 UserId = user.Id,
                 DateOfOpen = DateTime.Now,
                 QuestionState = QuestionState.Active,
                 NumberOfBestAnswers = 0
             };
-            question.UserId = user.Id;
+            model.UserId = user.Id;
+            model.QuestionState = QuestionState.Active;
 
             this.Data.Questions.Add(questionToAdd);
             this.Data.Questions.SaveChanges();
 
             return this.Created(new Uri(Url.Link("DefaultApi", new {controller = "Questions", id = questionToAdd.Id})),
-                question);
+                model);
         }
 
         [HttpPut]
@@ -214,7 +215,11 @@
             this.Data.Questions.Update(questionToDelete);
             this.Data.Questions.SaveChanges();
 
-            return Ok(id);
+            return Ok(new
+            {
+                message = "Question deleted successfully!",
+                QuestionId = questionToDelete.Id
+            });
         }
 
         [HttpPost]
@@ -237,6 +242,11 @@
             if (question == null)
             {
                 return this.BadRequest(Constants.NoSuchQuestion);
+            }
+
+            if (question.User.Id == currentUserId)
+            {
+                return this.BadRequest(Constants.OwnQuestionError);
             }
 
             var answer = new Answer
