@@ -103,6 +103,32 @@
             return this.Ok(bindedUser);
         }
 
+        [HttpGet]
+        [Route("question")]
+        public IHttpActionResult GetUserQuestions()
+        {
+            var currentUserId = this.User.Identity.GetUserId();
+            var user = this.Data.Users.GetById(currentUserId);
+            if (user == null)
+            {
+                return this.BadRequest(Constants.NotLoggedOn);
+            }
+
+            var questions = Data.Questions.All()
+                .Where(q => q.UserId == currentUserId)
+                .OrderByDescending(q => q.DateOfOpen)
+                .Select(q => new QuestionDataModel
+                {
+                    Id = q.Id,
+                    DateOfOpen = q.DateOfOpen,
+                    QuestionState = q.QuestionState,
+                    Title = q.Title,
+                    UserId = q.UserId
+                });
+
+            return Ok(questions);
+        }
+
         [HttpPost]
         [Route("question")]
         public IHttpActionResult PostNewQuestion(QuestionBindingModel model)

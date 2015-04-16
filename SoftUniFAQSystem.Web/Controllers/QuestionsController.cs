@@ -40,7 +40,7 @@
                 //NumberOfAnswers = q.Answers.Count()
             }));
 
-            return Ok(bindedQuestions);
+            return Ok(bindedQuestions.OrderByDescending(q => q.DateOfOpen));
         }
 
         [HttpGet]
